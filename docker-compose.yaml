@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    rekrd_server:
+        build:
+            context: .
+        image: 'rekrd-server'
+        container_name: 'rekrd_server'
+        environment:
+            - ADMIN_SERVER_INITDB_DATABASE=database-name
+            - ADMIN_SERVER_INITDB_ROOT_USERNAME=root-username
+            - ADMIN_SERVER_INITDB_ROOT_PASSWORD=secret
+            - ADMIN_SERVER_INITDB_URL=mongodb://admin_db
+            - ADMIN_SERVER_PORT=8020
+            - AWS_ACCESS_KEY=ACCESS_HERE
+            - AWS_SECRET_KEY=SECRET_HERE
+        ports:
+            - "8020:8020"
+        expose:
+            - 8020
+        depends_on:
+            - mongodb      
+
+    mongodb:
+        image: mongo
+        container_name: admin_db
+        ports:
+            - 27017:27017
+        expose:
+            - "27017"
+        volumes:
+            - ./mongo-volume:/data/db
