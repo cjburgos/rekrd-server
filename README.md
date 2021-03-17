@@ -4,6 +4,25 @@ Rekrd Server App processes user's requests to store and manage documents on the 
 
 Feel free to contact me for more information or if interested in collaborating. 
 
+## To run the environment:
+
+### Build images:
+```
+docker-compose build
+```
+
+### Run the environment:
+```
+docker-compose up
+```
+
+### Shutdown the environment:
+```
+docker-compose down
+```
+
+## To run the app manually:
+
 ### Install packages:
 ```
 npm install
